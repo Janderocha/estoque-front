@@ -1,5 +1,5 @@
 <template>
-  <div class="max-w-3xl mx-auto bg-white rounded-xl shadow-md p-8 mt-8">
+  <div class="max-w-3xl min-w-xl mx-auto bg-white rounded-xl shadow-md p-8 mt-8">
     <h2 class="text-2xl font-bold mb-6 text-[#F54F29]">Produtos</h2>
     <label class="block mb-4">
       <span class="text-gray-900">Tipo:</span>
@@ -28,8 +28,8 @@
           <td class="py-2 px-4">{{ p.tipo }}</td>
           <td class="py-2 px-4">{{ p.quantidadeEstoque }}</td>
           <td class="py-2 px-4">{{ p.quantidadeVendida }}</td>
-          <td class="py-2 px-4">
-            <router-link :to="`/produtos/${p.id}`" class="text-[#F54F29] hover:underline">Editar</router-link>
+          <td class="py-2 px-4 flex gap-2">
+            <router-link :to="`/produtos/id/${p.id}`" class="text-[#F54F29] hover:underline">Editar</router-link>
           </td>
         </tr>
         </tbody>
@@ -50,21 +50,21 @@ export default {
     };
   },
   mounted() {
-    this.carregarTipos();
     this.carregarProdutos();
   },
   methods: {
-    carregarTipos() {
-      axios.get('http://localhost:8081/estoque/tipos-produto')
-          .then(res => this.tipos = res.data);
-    },
     carregarProdutos() {
-      let url = 'http://localhost:8081/estoque/produtos';
+      let url = 'http://localhost:8081/produtos';
       if (this.tipoSelecionado) {
-        url += `/${this.tipoSelecionado}`;
+        url += `/tipo/${this.tipoSelecionado}`;
       }
       axios.get(url).then(res => this.produtos = res.data);
     }
   }
 };
+</script>
+<script setup>
+import { useFormatarDinheiro } from '../composables/useFormatarDinheiro';
+
+const { formatarDinheiro } = useFormatarDinheiro();
 </script>

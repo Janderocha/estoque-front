@@ -1,27 +1,10 @@
 import { createApp } from 'vue'
 import App from './App.vue'
-import { createRouter, createWebHistory } from 'vue-router';
-import produtoList from './components/ProdutoList.vue';
-import produtoForm from './components/ProdutoForm.vue';
-import movimentacaoForm from "./components/MovimentacaoForm.vue";
-import LucroProduto from "./components/LucroProduto.vue";
-
+import router from './router';
 import './style.css'
-import ProdutoList from "./components/ProdutoList.vue";
+import { VMoney } from 'v-money3'
 
 
-const routes = [
-    { path: '/produtos', component: produtoList },
-    { path: '/produtos/novo', component: produtoForm },
-    { path: '/produtos/:id', component: produtoForm, props: true },
-    { path: '/movimentacoes/novo', component: movimentacaoForm, props: true },
-    { path: '/financeiro/', component: LucroProduto, props: true },
-    { path: '/', component: ProdutoList, props: true }
-];
+createApp(App).use(router).directive('money', VMoney).mount('#app');
 
-const router = createRouter({
-    history: createWebHistory(),
-    routes
-});
 
-createApp(App).use(router).mount('#app');
