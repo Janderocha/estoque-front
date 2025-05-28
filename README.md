@@ -44,7 +44,7 @@ execute a aplicacao localmente
 ```bash
 npm run dev
 ```
-a aplicacao estará disponível em http:localhost:5173
+a aplicacao estará disponível em http://localhost:5173
 
 IMPORTANTE:Importante: a API do estoque precisa estar em execução em http://localhost:8081
 
