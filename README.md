@@ -33,11 +33,17 @@ Clone o repositório:
 ```bash
 git clone https://github.com/Janderocha/estoque-front.git
 cd estoque-front
+```
 
-instale as dependencias com npm install
+instale as dependencias 
+```bash
+npm install
+```
 
-execute a aplicacao localmente com npm run dev
-
+execute a aplicacao localmente 
+```bash
+npm run dev
+```
 a aplicacao estará disponível em http:localhost:5173
 
 IMPORTANTE:Importante: a API do estoque precisa estar em execução em http://localhost:8081
